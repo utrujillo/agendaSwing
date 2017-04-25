@@ -103,7 +103,17 @@ public class App {
             }
         });
 
-
+        // Listener cuando es presionado el menu Entrada de productos
+        subent.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Entrada de Productos");
+                frame.setContentPane(new FrmInProductos().mainContainer);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setSize(350,400);
+                frame.setVisible(true);
+            }
+        });
 
     }
 }
