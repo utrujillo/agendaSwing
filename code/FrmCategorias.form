@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="code.FrmMedidas">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="code.FrmCategorias">
   <grid id="27dc6" binding="mainContainer" layout-manager="GridLayoutManager" row-count="4" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
@@ -8,20 +8,20 @@
     <properties/>
     <border type="none"/>
     <children>
-      <component id="75ec6" class="javax.swing.JLabel">
+      <component id="fd885" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="ID. Medida"/>
+          <text value="ID. Categoria"/>
         </properties>
       </component>
-      <vspacer id="3cc57">
+      <vspacer id="173c2">
         <constraints>
           <grid row="3" column="0" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
         </constraints>
       </vspacer>
-      <component id="bc8f4" class="javax.swing.JTextField" binding="idMedida_txt">
+      <component id="a6352" class="javax.swing.JTextField" binding="idCategoria_txt">
         <constraints>
           <grid row="0" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -29,15 +29,15 @@
         </constraints>
         <properties/>
       </component>
-      <component id="65b5a" class="javax.swing.JLabel">
+      <component id="2e7fb" class="javax.swing.JLabel">
         <constraints>
-          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="4" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Medida"/>
+          <text value="Categoría"/>
         </properties>
       </component>
-      <component id="40421" class="javax.swing.JTextField" binding="medida_txt">
+      <component id="50bba" class="javax.swing.JTextField" binding="categoria_txt">
         <constraints>
           <grid row="1" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="6" anchor="8" fill="1" indent="0" use-parent-layout="false">
             <preferred-size width="150" height="-1"/>
@@ -45,12 +45,12 @@
         </constraints>
         <properties/>
       </component>
-      <component id="6a44f" class="javax.swing.JButton" binding="agregarMedida_btn">
+      <component id="d17" class="javax.swing.JButton" binding="agregarCategoria_btn">
         <constraints>
           <grid row="2" column="1" row-span="1" col-span="1" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <text value="Agregar medida"/>
+          <text value="Agregar Categoria"/>
         </properties>
       </component>
     </children>

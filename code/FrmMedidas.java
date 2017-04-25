@@ -9,5 +9,5 @@ public class FrmMedidas {
     public JPanel mainContainer;
     private JTextField idMedida_txt;
     private JTextField medida_txt;
-    private JButton agregarMedidaButton;
+    private JButton agregarMedida_btn;
 }

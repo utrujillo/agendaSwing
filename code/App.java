@@ -69,7 +69,19 @@ public class App {
             }
         });
 
-        // Listener cuando es presionado el menu salir
+        // Listener cuando es presionado el menu Categorias
+        subcat.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Categorias");
+                frame.setContentPane(new FrmCategorias().mainContainer);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setSize(300,400);
+                frame.setVisible(true);
+            }
+        });
+
+        // Listener cuando es presionado el menu Medidas
         submed.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
