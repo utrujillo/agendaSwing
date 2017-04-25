@@ -1,6 +1,10 @@
 package code;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import javax.swing.*;
+import javax.swing.event.MenuListener;
+import javax.swing.event.MenuEvent;
 
 /**
  * Created by codehero on 25/04/17.
@@ -30,14 +34,14 @@ public class App {
         // Agregando las opciones del menu - sistema
         sistema = new JMenu("Sistema");
         menubar.add(sistema);
-            salir = new JMenuItem("salir");
+            salir = new JMenuItem("Salir");
 
             sistema.add(salir);
 
         // Agregando las opciones del menu - movimientos
         movimientos = new JMenu("Movimientos");
         menubar.add(movimientos);
-            subcat = new JMenuItem("Categorias");
+            subcat = new JMenuItem("Categorías");
             submed = new JMenuItem("Medidas");
             subprod = new JMenuItem("Productos");
             subent = new JMenuItem("Entradas");
@@ -52,5 +56,33 @@ public class App {
             movimientos.add(submov);
 
         mainframe.setVisible(true);
+
+        /*  Listeners
+            Eventos que se ejecutan cuando se presiona alguna opcion del memú
+         */
+
+        // Listener cuando es presionado el menu salir
+        salir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                System.exit(0);
+            }
+        });
+
+        // Listener cuando es presionado el menu salir
+        submed.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Medidas");
+                frame.setContentPane(new FrmMedidas().mainContainer);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setSize(300,400);
+                frame.setVisible(true);
+            }
+        });
+
+
+
+
     }
 }
