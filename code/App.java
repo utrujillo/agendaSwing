@@ -74,7 +74,7 @@ public class App {
                 JFrame frame = new JFrame("Categorias");
                 frame.setContentPane(new FrmCategorias().mainContainer);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                frame.setSize(380,400);
+                frame.setSize(420,400);
                 frame.setVisible(true);
             }
         });
