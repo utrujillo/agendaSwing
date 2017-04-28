@@ -18,8 +18,8 @@ public class FrmCategorias {
     private JButton actualizarCategoria_btn;
     private JButton eliminarCategoria_btn;
     private JTextField categoria_txt;
-    private JLabel message_label;
     private JTable categories_jtable;
+    private JLabel message_label;
 
     public FrmCategorias(){
         Categoria categoria = new Categoria();
