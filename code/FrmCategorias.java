@@ -89,7 +89,7 @@ public class FrmCategorias {
                     categoria_txt.setText("");
                 }else{
                     JOptionPane.showMessageDialog(mainContainer,
-                            "Necesitas especificar el ID de la categoria a eliminar",
+                            "Especificar el ID de categoria existente para eliminar",
                             "Eliminar categoria",
                             JOptionPane.ERROR_MESSAGE);
                 }
