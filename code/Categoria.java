@@ -11,8 +11,8 @@ import java.util.Comparator;
  * Created by codehero on 28/04/17.
  */
 public class Categoria {
-    private Integer idCategoria;
     private String nombreCateogoria;
+    private Integer idCategoria;
 
     // Variables Globales de la clase
     public File path = new File("/Users/codehero/Desktop");
