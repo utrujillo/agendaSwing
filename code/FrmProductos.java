@@ -130,7 +130,7 @@ public class FrmProductos {
                 String codigo = codigo_txt.getText();
 
                 if (codigo.length() > 0 ){
-                    producto.eliminaCategoria(Integer.parseInt(codigo), creaproductos_jtable, 1);
+                    producto.eliminaProducto(Integer.parseInt(codigo), creaproductos_jtable, 1);
                     cleanFields();
                 }else{
                     JOptionPane.showMessageDialog(mainContainer,

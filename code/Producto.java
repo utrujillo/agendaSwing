@@ -130,30 +130,51 @@ public class Producto {
     // Si paso type = 1 muestro solo los productos basicos codigo, descripcion, idCategoria, idMedida
     // Si paso type = 2 muestro toda la informacion del archivo productos.txt
     public void mostrarProductos(JTable jtable_display, Integer type){
-        // Ordenamos las categorias
+        // Ordenamos los productos
         this.ordenaProductos();
 
-        // Agregamos las categorias al tableModel para poder mostrarlas en el grid
+        // Agregamos los productos al tableModel para poder mostrarlas en el grid
         DefaultTableModel model = new DefaultTableModel();
         model.addColumn("Codigo");
         model.addColumn("Descripción");
         model.addColumn("idCategoria");
         model.addColumn("idMedida");
 
+        if (type == 2){
+            model.addColumn("Cantidad");
+            model.addColumn("P. Compra");
+            model.addColumn("P. Venta");
+            model.addColumn("Utilidad");
+        }
+
         for(Producto item : productosAL){
-            model.addRow( new Object[]{
-                    item.getCodigo(),
-                    item.getDescripcion(),
-                    item.getIdCategoria(),
-                    item.getIdMedida()
-            } );
+            if( type == 1 ){
+                model.addRow( new Object[]{
+                        item.getCodigo(),
+                        item.getDescripcion(),
+                        item.getIdCategoria(),
+                        item.getIdMedida()
+                } );
+            }else if (type == 2){
+                model.addRow( new Object[]{
+                        item.getCodigo(),
+                        item.getDescripcion(),
+                        item.getIdCategoria(),
+                        item.getIdMedida(),
+                        item.getCantidad(),
+                        item.getpCompra(),
+                        item.getpVenta(),
+                        item.getUtilidad()
+                } );
+            }
+
         }
 
         jtable_display.setModel(model);
 
     }
 
-    // Agregamos las categorias al ArrayList productosAL
+    // Agregamos los productos al ArrayList productosAL
     public void altaProducto(Integer codigo, String descripcion, Integer idCategoria, Integer idMedida , JTable jtable_display ){
 
         try {
@@ -219,7 +240,7 @@ public class Producto {
     }
 
     // Eliminación de producto, dependiendo del ID encontrado en codigo_txt
-    public void eliminaCategoria(Integer codigo, JTable jtable_display, Integer type){
+    public void eliminaProducto(Integer codigo, JTable jtable_display, Integer type){
 
         Boolean itemDeleted = false;
 
@@ -232,9 +253,9 @@ public class Producto {
 
         if (itemDeleted) {
 
-            // Guardamos la categoria en el archivo categoria.txt
+            // Guardamos el producto en el archivo productos.txt
             this.guardarProductos();
-            // Listamos nuevamente las categorias
+            // Listamos nuevamente los productos
             this.mostrarProductos(jtable_display, type);
             JOptionPane.showMessageDialog(null,
                     "El producto ha sido eliminado",
