@@ -20,7 +20,7 @@ public class App {
     }
 
     public void createWindow(){
-        JFrame mainframe = new JFrame("Agenda - App");
+        JFrame mainframe = new JFrame("Control Inventario - App");
         mainframe.setContentPane( new App().panelMain );
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.setSize(300, 400);
@@ -98,7 +98,7 @@ public class App {
                 JFrame frame = new JFrame("Productos");
                 frame.setContentPane(new FrmProductos().mainContainer);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                frame.setSize(300,400);
+                frame.setSize(420,400);
                 frame.setVisible(true);
             }
         });
@@ -110,7 +110,7 @@ public class App {
                 JFrame frame = new JFrame("Entrada de Productos");
                 frame.setContentPane(new FrmInProductos().mainContainer);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                frame.setSize(350,400);
+                frame.setSize(620,400);
                 frame.setVisible(true);
             }
         });
@@ -122,7 +122,19 @@ public class App {
                 JFrame frame = new JFrame("Salida de Productos");
                 frame.setContentPane(new FrmOutProductos().mainContainer);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                frame.setSize(350,400);
+                frame.setSize(620,400);
+                frame.setVisible(true);
+            }
+        });
+
+        // Listener cuando es presionado el menu Salida de productos
+        submov.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Movimiento de productos");
+                frame.setContentPane(new FrmMovimientos().mainContainer);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setSize(450,400);
                 frame.setVisible(true);
             }
         });
