@@ -90,8 +90,27 @@ public class FrmOutProductos {
                 Integer cantidad = Integer.parseInt( cantidad_txt.getText() );
 
                 if( codigo > 0 && cantidad >= 0 ){
-                    producto.actualizaProducto( codigo, cantidad, productosout_jtable, 3 );
-                    cleanFields();
+
+                    Producto itemFound = producto.buscaProducto( codigo );
+
+                    if ( itemFound != null ){
+                        producto.actualizaProducto( codigo, cantidad, productosout_jtable, 3 );
+                        cleanFields();
+                        // Agregamos el registro en la tabla de movimientos
+                        Movimiento mov = new Movimiento();
+                        mov.cargaArchivoMovimientos();
+
+                        Float precio = itemFound.getpVenta() * cantidad;
+
+                        mov.altaMovimiento(2, codigo, 0, cantidad, precio );
+                    }else{
+                        JOptionPane.showMessageDialog(mainContainer,
+                                "El codigo a actualizar no fue encontrado",
+                                "Actualizar producto",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+
+
                 }else{
                     JOptionPane.showMessageDialog(mainContainer,
                             "No debe haber datos vacios",

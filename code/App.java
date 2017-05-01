@@ -20,7 +20,7 @@ public class App {
     }
 
     public void createWindow(){
-        JFrame mainframe = new JFrame("Agenda - App");
+        JFrame mainframe = new JFrame("Control Inventario - App");
         mainframe.setContentPane( new App().panelMain );
         mainframe.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         mainframe.setSize(300, 400);
@@ -123,6 +123,18 @@ public class App {
                 frame.setContentPane(new FrmOutProductos().mainContainer);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
                 frame.setSize(620,400);
+                frame.setVisible(true);
+            }
+        });
+
+        // Listener cuando es presionado el menu Salida de productos
+        submov.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                JFrame frame = new JFrame("Movimiento de productos");
+                frame.setContentPane(new FrmMovimientos().mainContainer);
+                frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
+                frame.setSize(450,400);
                 frame.setVisible(true);
             }
         });

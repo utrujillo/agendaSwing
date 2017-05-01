@@ -40,7 +40,6 @@ public class FrmInProductos {
                         descripcion_label.setText( itemFound.getDescripcion().toString() );
                         categoria_label.setText( itemFound.getIdCategoria().toString() );
                         medida_label.setText( itemFound.getIdMedida().toString() );
-                        cantidad_txt.setText( itemFound.getCantidad().toString() );
                         pCompra_txt.setText( itemFound.getpCompra().toString() );
                         pVenta_txt.setText( itemFound.getpVenta().toString() );
                     }else{
@@ -78,7 +77,6 @@ public class FrmInProductos {
                 Integer cantidad = Integer.parseInt( cantidad_txt.getText() );
                 Float pCompra = Float.parseFloat( pCompra_txt.getText() );
                 Float pVenta = Float.parseFloat( pVenta_txt.getText() );
-                Float utilidad = ( pVenta - pCompra ) * cantidad;
 
                 if( codigo > 0
                         && !descripcion.equals("")
@@ -89,17 +87,38 @@ public class FrmInProductos {
                         && pVenta >= 0)
                 {
 
-                    producto.actualizaProducto( codigo ,
-                            descripcion,
-                            idCategoria,
-                            idMedida,
-                            cantidad,
-                            pCompra,
-                            pVenta,
-                            utilidad,
-                            productosin_jtable,
-                            2);
-                    cleanFields();
+                    Producto itemFound = producto.buscaProducto( codigo );
+
+                    if( itemFound != null ){
+
+                        Integer viejaCantidad = itemFound.getCantidad();
+                        Integer nuevaCantidad = cantidad + viejaCantidad;
+                        Float utilidad = ( pVenta - pCompra ) * nuevaCantidad;
+                        producto.actualizaProducto( codigo ,
+                                descripcion,
+                                idCategoria,
+                                idMedida,
+                                nuevaCantidad,
+                                pCompra,
+                                pVenta,
+                                utilidad,
+                                productosin_jtable,
+                                2);
+                        cleanFields();
+
+                        // Agregamos el registro en la tabla de movimientos
+                        Movimiento mov = new Movimiento();
+                        mov.cargaArchivoMovimientos();
+
+                        Float precio = pCompra * cantidad;
+                        mov.altaMovimiento( 1, codigo, cantidad, 0, precio );
+                    }else{
+                        JOptionPane.showMessageDialog(mainContainer,
+                                "El codigo a actualizar no fue encontrado",
+                                "Actualizar producto",
+                                JOptionPane.ERROR_MESSAGE);
+                    }
+
                 }else{
                     JOptionPane.showMessageDialog(mainContainer,
                             "No debe haber datos vacios",
