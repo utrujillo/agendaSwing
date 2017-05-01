@@ -147,6 +147,11 @@ public class Producto {
             model.addColumn("Utilidad");
         }
 
+        if (type == 3){
+            model.addColumn("Cantidad");
+            model.addColumn("P. Venta");
+        }
+
         for(Producto item : productosAL){
             if( type == 1 ){
                 model.addRow( new Object[]{
@@ -165,6 +170,15 @@ public class Producto {
                         item.getpCompra(),
                         item.getpVenta(),
                         item.getUtilidad()
+                } );
+            }else if (type == 3){
+                model.addRow( new Object[]{
+                        item.getCodigo(),
+                        item.getDescripcion(),
+                        item.getIdCategoria(),
+                        item.getIdMedida(),
+                        item.getCantidad(),
+                        item.getpVenta(),
                 } );
             }
 
@@ -227,6 +241,51 @@ public class Producto {
                         "El producto ha sido actualizado",
                         "Actualizar producto",
                         JOptionPane.INFORMATION_MESSAGE);
+            }else{
+                JOptionPane.showMessageDialog(null,
+                        "Por seguridad el ID no puede ser cambiado",
+                        "Actualizar producto",
+                        JOptionPane.ERROR_MESSAGE);
+            }
+
+        } catch (Exception e) {
+            System.out.println( e.getLocalizedMessage() );
+        }
+    }
+
+    // Actualizamos el producto, dependiendo del ID buscado
+    // Utilizando la tecnica de polimormisfo en el metodo actualizaProducto, solo actualiza la cantidad y la utilidad
+    public void actualizaProducto(Integer codigo, Integer cantidad, JTable jtable_display, Integer type){
+        try {
+
+            Producto itemFound = this.buscaProducto( codigo );
+
+            if ( itemFound != null){
+
+                Integer cantidadActual = itemFound.getCantidad();
+
+                // Verificamos si hay suficiente cantidad en el almacen para atender el pedido
+                if( ( cantidadActual - cantidad ) >= 0 ){
+                    Integer nuevaCantidad = cantidadActual - cantidad;
+                    itemFound.setCantidad( nuevaCantidad );
+                    Float utilidad = ( itemFound.getpVenta() - itemFound.getpCompra() ) * nuevaCantidad;
+                    itemFound.setUtilidad(utilidad);
+
+                    // Guardamos el producto en el archivo productos.txt
+                    this.guardarProductos();
+                    // Listamos nuevamente los productos
+                    this.mostrarProductos(jtable_display, type);
+                    JOptionPane.showMessageDialog(null,
+                            "El producto ha sido actualizado",
+                            "Actualizar producto",
+                            JOptionPane.INFORMATION_MESSAGE);
+                }else{
+                    JOptionPane.showMessageDialog(null,
+                            "Lo siento, no hay suficiente producto en stock para poder atender tu pedido",
+                            "Salida de producto",
+                            JOptionPane.ERROR_MESSAGE);
+                }
+
             }else{
                 JOptionPane.showMessageDialog(null,
                         "Por seguridad el ID no puede ser cambiado",

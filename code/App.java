@@ -122,7 +122,7 @@ public class App {
                 JFrame frame = new JFrame("Salida de Productos");
                 frame.setContentPane(new FrmOutProductos().mainContainer);
                 frame.setDefaultCloseOperation(JFrame.HIDE_ON_CLOSE);
-                frame.setSize(350,400);
+                frame.setSize(620,400);
                 frame.setVisible(true);
             }
         });
