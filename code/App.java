@@ -127,7 +127,7 @@ public class App {
             }
         });
 
-        // Listener cuando es presionado el menu Salida de productos
+        // Listener cuando es presionado el menu Movimiento de productos
         submov.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {

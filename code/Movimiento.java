@@ -146,13 +146,9 @@ public class Movimiento {
 
             movimiento.setIdMovimiento( idMovimiento );
             movimiento.setTipoMovimiento( tipoMovimiento );
-            /*
-                Nota: Por alguna extraña razon tuve que invertir los valores de setCodito(cantidadEntrda) y
-                setCantidadEntrada( codigo ) le estuve busque y busque y todo esta aparentemente bien, no se cual
-                es el problema pero asi funciona correctamente(con los campos invertidos)
-             */
-            movimiento.setCodigo( cantidadEntrada );
-            movimiento.setCantidadEntrada( codigo );
+            
+            movimiento.setCodigo( codigo );
+            movimiento.setCantidadEntrada( cantidadEntrada );
             movimiento.setCantidadSalida( cantidadSalida );
             movimiento.setPrecio( precio );
 
